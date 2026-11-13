@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
         rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-   <link href="{{ asset('css/styles.css') }}" rel="stylesheet"  />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -38,31 +38,27 @@
                             мне</a></li>
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="categoriesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="categoriesDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                             Категории
 
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                            @foreach ($categories as $category)
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
 
-                            <li>
-                                <a class="dropdown-item" href="#">PHP</a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="#">Laravel</a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="#">MySQL</a>
-                            </li>
 
                         </ul>
 
                     </li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('contacts') }}">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="{{ route('contacts') }}">Контакты</a></li>
                 </ul>
             </div>
         </div>
@@ -122,4 +118,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="{{ asset('js/scripts.js') }}"></script>    
+    <script src="{{ asset('js/scripts.js') }}"></script>
+</body>
+
+</html>
